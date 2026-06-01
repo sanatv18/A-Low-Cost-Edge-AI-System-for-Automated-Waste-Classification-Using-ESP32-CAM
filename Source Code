@@ -1,0 +1,109 @@
+#include <finalmpmcproj_inferencing.h>
+#include "edge-impulse-sdk/dsp/image/image.hpp"
+#include "esp_camera.h"
+#include <Wire.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+#include <ESP32Servo.h>
+
+Servo myServo;
+
+unsigned long lastActionTime = 0;
+const unsigned long delayTime = 5000;
+bool canMove = true;
+
+#define CAMERA_MODEL_AI_THINKER
+
+#define PWDN_GPIO_NUM 32
+#define RESET_GPIO_NUM -1
+#define XCLK_GPIO_NUM 0
+#define SIOD_GPIO_NUM 26
+#define SIOC_GPIO_NUM 27
+#define Y9_GPIO_NUM 35
+#define Y8_GPIO_NUM 34
+#define Y7_GPIO_NUM 39
+#define Y6_GPIO_NUM 36
+#define Y5_GPIO_NUM 21
+#define Y4_GPIO_NUM 19
+#define Y3_GPIO_NUM 18
+#define Y2_GPIO_NUM 5
+#define VSYNC_GPIO_NUM 25
+#define HREF_GPIO_NUM 23
+#define PCLK_GPIO_NUM 22
+
+#define EI_CAMERA_RAW_FRAME_BUFFER_COLS 320
+#define EI_CAMERA_RAW_FRAME_BUFFER_ROWS 240
+#define EI_CAMERA_FRAME_BYTE_SIZE 3
+
+#define I2C_SDA 15
+#define I2C_SCL 2
+#define SERVO_PIN 12
+
+TwoWire I2Cbus = TwoWire(0);
+
+#define SCREEN_WIDTH 128
+#define SCREEN_HEIGHT 64
+#define OLED_RESET -1
+#define SCREEN_ADDRESS 0x3C
+
+Adafruit_SSD1306 display(
+    SCREEN_WIDTH,
+    SCREEN_HEIGHT,
+    &I2Cbus,
+    OLED_RESET
+);
+
+void setup() {
+    Serial.begin(115200);
+
+    I2Cbus.begin(I2C_SDA, I2C_SCL, 100000);
+
+    display.begin(
+        SSD1306_SWITCHCAPVCC,
+        SCREEN_ADDRESS
+    );
+
+    myServo.attach(SERVO_PIN);
+    myServo.write(90);
+
+    while (!Serial);
+
+    display.clearDisplay();
+    display.setCursor(0,0);
+    display.setTextSize(1);
+    display.setTextColor(SSD1306_WHITE);
+    display.print("AI Smart Waste System");
+    display.display();
+}
+
+void loop() {
+
+    // Capture image
+    // Run Edge Impulse classifier
+
+    if (detectedLabel == "battery") {
+
+        display.clearDisplay();
+        display.setCursor(0,20);
+        display.setTextSize(2);
+        display.print("battery");
+        display.display();
+
+        myServo.write(180);
+        delay(2000);
+        myServo.write(90);
+    }
+
+    else if (detectedLabel == "paper") {
+
+        display.clearDisplay();
+        display.setCursor(0,20);
+        display.setTextSize(2);
+        display.print("paper");
+        display.display();
+
+        myServo.write(0);
+        delay(2000);
+        myServo.write(90);
+    }
+}
