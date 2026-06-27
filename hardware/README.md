@@ -1,11 +1,13 @@
 # Hardware
 
-This folder contains all hardware-related resources for the project.
+This folder contains the hardware documentation for the Edge AI Smart Waste Classification System.
 
 Contents include:
 
+- System Block Diagram
 - Circuit Diagram
 - Wiring Diagram
-- System Block Diagram
-- GPIO Pin Connections
+- ESP32-CAM Pin Connections
 - Bill of Materials (BOM)
+
+The hardware architecture integrates an ESP32-CAM with an OLED display, SG90 servo motor, and Wi-Fi connectivity to perform Edge AI-based waste classification and IoT cloud monitoring.
