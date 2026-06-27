@@ -209,11 +209,15 @@ The ESP32 uploads classification data to the **ThingSpeak Cloud Platform** throu
 │
 ├── hardware/
 │   ├── README.md
+│   ├── System.png
 │   ├── block_diagram.png
 │   ├── circuit_diagram.png
 │   ├── wiring_diagram.png
 │   ├── pin_connections.md
-│   └── bill_of_materials.md
+│   ├── bill_of_materials.md
+│   └── demo_video/
+│       ├── Output.mp4
+│       └── System setup.mp4
 │
 ├── edge_impulse/
 │   ├── README.md
@@ -225,10 +229,8 @@ The ESP32 uploads classification data to the **ThingSpeak Cloud Platform** throu
 │   ├── README.md
 │   └── Project_Report.pdf
 │
-└── README.md
+└── LICENSE
 ```
-
-
 
 # 🚧 Challenges Faced
 
