@@ -318,15 +318,23 @@ Added reconnection logic before uploading data to ThingSpeak.
 
 ---
 
-# 👨‍💻 Author
+# Authors
 
-**Sanat Vasisht**
+### Sanat Vasisht
+- Edge Impulse machine learning model development
+- Hardware architecture and system design
+- ThingSpeak cloud integration
+- Embedded firmware development
+- GitHub documentation and project maintenance
 
-B.Tech Electronics and Communication Engineering
+### Varun Shankar
+- Embedded firmware development
+- Hardware implementation and integration
+- System testing and validation
 
-Vellore Institute of Technology (VIT)
+## Contribution Summary
 
-GitHub: https://github.com/sanatv18
+This project was developed collaboratively by both authors. Responsibilities were divided across machine learning, embedded firmware, hardware design, IoT cloud integration, system testing, and documentation.
 
 ---
 
