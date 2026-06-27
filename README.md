@@ -1,93 +1,69 @@
-# A Low-Cost Edge AI System for Automated Waste Classification Using ESP32-CAM
+# A Low-Cost Edge AI & IoT System for Automated Waste Classification Using ESP32-CAM
 
 ![Platform](https://img.shields.io/badge/Platform-ESP32--CAM-blue)
-![Edge AI](https://img.shields.io/badge/AI-Edge%20Impulse-green)
-![Language](https://img.shields.io/badge/Language-C%2B%2B-orange)
+![AI](https://img.shields.io/badge/AI-Edge%20Impulse-green)
+![Cloud](https://img.shields.io/badge/Cloud-ThingSpeak-orange)
+![Language](https://img.shields.io/badge/Language-C++-blue)
 ![Status](https://img.shields.io/badge/Status-Completed-success)
 
 ---
 
-## Project Overview
+## 📌 Project Overview
 
-This project presents a **low-cost Edge AI waste classification system** that performs **real-time object detection directly on an ESP32-CAM** using an Edge Impulse machine learning model.
+This project presents a **low-cost Edge AI and IoT-based Smart Waste Classification System** developed using an **ESP32-CAM**, **Edge Impulse Machine Learning**, and **ThingSpeak Cloud**.
 
-Unlike cloud-based AI systems, the complete inference process runs locally on the microcontroller, enabling **offline operation**, **low latency**, and **minimal power consumption**.
+The ESP32-CAM captures images of waste objects and performs **real-time on-device object detection** using a trained Edge Impulse model. Once classified, a servo motor automatically directs the waste into the appropriate compartment while an OLED display shows the detected waste category along with its confidence score.
 
-After classifying the waste object, the system automatically rotates a servo motor to direct the object into the correct compartment while simultaneously displaying the detected class and confidence score on an OLED display.
+To enable remote monitoring, the ESP32 uploads classification results to the **ThingSpeak Cloud Platform**, allowing real-time visualization, historical data logging, and analytics.
 
----
-
-## Project Highlights
-
-- Developed a complete Embedded AI system using ESP32-CAM
-- Implemented real-time on-device object detection using Edge Impulse
-- Designed automatic waste segregation using servo motor control
-- Displayed prediction labels and confidence scores on OLED display
-- Achieved approximately **90% classification accuracy**
-- Fully offline Edge AI inference without cloud connectivity
-- Developed using Embedded C++ and Arduino Framework
+This project demonstrates the integration of **Embedded Systems**, **Computer Vision**, **Machine Learning**, and **IoT Cloud Technologies** into a compact, low-cost, and energy-efficient smart waste management solution.
 
 ---
 
-## Demonstration
+# ✨ Features
 
-> **Demo Video:** *(Insert YouTube or Drive Link Here)*
+- Real-time Edge AI inference on ESP32-CAM
+- Fully offline object detection using Edge Impulse
+- Automatic waste segregation using servo motor
+- OLED display showing prediction and confidence
+- Wi-Fi enabled cloud connectivity
+- Real-time data logging using ThingSpeak
+- Historical analytics through cloud dashboard
+- Low-cost and energy-efficient embedded solution
+
+---
+
+# 🎥 Demonstration
+
+> **Project Demo Video**
+
+(Add YouTube or Google Drive link here)
 
 <p align="center">
-<img src="images/classification_demo.gif" width="750">
+<img src="images/demo.gif" width="750">
 </p>
 
 ---
 
-# System Architecture
-
-```text
-Waste Object
-      │
-      ▼
-ESP32-CAM
-      │
-      ▼
-Image Capture
-      │
-      ▼
-Edge Impulse ML Model
-      │
-      ▼
-Object Detection
-      │
-      ▼
-Prediction
-      │
- ┌────┴─────┐
- ▼          ▼
-OLED      Servo Motor
-Display     Control
-              │
-              ▼
- Waste Segregation
-```
-
----
-
-# Hardware Components
+# 🛠 Hardware Components
 
 | Component | Purpose |
-|------------|----------------------------|
+|------------|-----------------------------|
 | ESP32-CAM | Image Capture & AI Inference |
-| Servo Motor (SG90) | Waste Segregation |
-| OLED SSD1306 | Prediction Display |
+| SG90 Servo Motor | Automatic Waste Segregation |
+| OLED SSD1306 Display | Prediction Display |
 | Breadboard | Prototyping |
-| Jumper Wires | Hardware Connections |
+| Jumper Wires | Connections |
 | 5V Power Supply | System Power |
 
 ---
 
-# Software & Tools
+# 💻 Software & Tools
 
 - Arduino IDE
-- Edge Impulse
 - Embedded C++
+- Edge Impulse
+- ThingSpeak Cloud
 - ESP32 Camera Library
 - ESP32Servo Library
 - Adafruit SSD1306
@@ -96,20 +72,52 @@ Display     Control
 
 ---
 
-# Working Principle
+# 🏗 System Architecture
 
-1. ESP32-CAM continuously captures images.
-2. Images are resized and preprocessed.
-3. Edge Impulse performs object detection.
-4. Prediction label and confidence score are generated.
-5. OLED displays classification results.
-6. Servo rotates toward the corresponding waste compartment.
-7. Servo returns to the default position.
-8. System waits for the next object.
+```text
+                 Waste Object
+                      │
+                      ▼
+                ESP32-CAM Camera
+                      │
+                      ▼
+              Image Acquisition
+                      │
+                      ▼
+           Edge Impulse ML Model
+                      │
+                      ▼
+             Waste Classification
+                      │
+          ┌───────────┼────────────┐
+          ▼           ▼            ▼
+      OLED Display  Servo Motor   Wi-Fi
+          │           │            │
+          ▼           ▼            ▼
+ Prediction &     Waste Bin    ThingSpeak
+ Confidence       Selection      Cloud
+                                   │
+                                   ▼
+                         Real-Time Dashboard
+                         Historical Analytics
+```
 
 ---
 
-# Machine Learning Model
+# ⚙ Working Principle
+
+1. ESP32-CAM captures an image of the waste object.
+2. The image is preprocessed and sent to the Edge Impulse model.
+3. The model classifies the object as biodegradable or non-biodegradable.
+4. Prediction label and confidence score are displayed on the OLED.
+5. Servo motor rotates to the appropriate waste compartment.
+6. Classification data is transmitted to ThingSpeak over Wi-Fi.
+7. ThingSpeak stores and visualizes the data through cloud dashboards.
+8. Servo returns to its default position and waits for the next object.
+
+---
+
+# 🤖 Machine Learning Model
 
 ### Framework
 
@@ -119,49 +127,72 @@ Edge Impulse
 
 Object Detection
 
-### Classes
+### Waste Categories
 
 - Paper (Biodegradable)
 - Battery (Non-Biodegradable)
 
-### Dataset
+### Training Dataset
 
-The model was trained using images captured under different
+The model was trained using images captured under:
 
-- Lighting conditions
-- Viewing angles
-- Background environments
+- Multiple lighting conditions
+- Different viewing angles
+- Various backgrounds
 
-to improve robustness and generalization.
+to improve model robustness.
 
 ---
 
-# Performance
+# ☁ IoT Cloud Integration
+
+The ESP32 uploads classification data to the **ThingSpeak Cloud Platform** through Wi-Fi.
+
+### Cloud Parameters
+
+- Waste Category
+- Confidence Score
+- Detection Count
+- Timestamp
+- System Status
+
+### Cloud Features
+
+- Live Dashboard
+- Historical Data Storage
+- Automatic Graph Generation
+- Remote Monitoring
+- IoT Analytics
+
+---
+
+# 📊 Performance
 
 | Metric | Value |
-|---------|-------|
+|----------|---------|
 | Classification Accuracy | ~90% |
-| Processing Mode | On-device Inference |
-| Internet Required | No |
-| Display Output | OLED |
+| Processing Mode | Edge AI |
+| Cloud Platform | ThingSpeak |
+| Internet Required | Only for Cloud Upload |
+| Display | OLED SSD1306 |
+| Servo Response | Real-Time |
 | Waste Segregation | Automatic |
-| Inference | Real-Time |
 
 ---
 
-# Hardware Connections
+# 🔌 Hardware Connections
 
 | ESP32 Pin | Connected Device |
 |------------|----------------|
 | GPIO12 | Servo Signal |
 | GPIO15 | OLED SDA |
 | GPIO2 | OLED SCL |
-| 5V | Servo Supply |
-| 3.3V | OLED |
+| 5V | Servo Power |
+| 3.3V | OLED Power |
 
 ---
 
-# Repository Structure
+# 📁 Repository Structure
 
 ```text
 .
@@ -176,13 +207,15 @@ to improve robustness and generalization.
 ├── edge_impulse/
 │   ├── dataset.md
 │   ├── confusion_matrix.png
-│   └── training_metrics.png
+│   ├── training_metrics.png
+│   └── model_summary.png
 │
 ├── images/
 │   ├── system_setup.jpg
 │   ├── oled_output.jpg
+│   ├── thingspeak_dashboard.png
 │   ├── architecture.png
-│   └── classification_demo.gif
+│   └── demo.gif
 │
 ├── docs/
 │   └── Project_Report.pdf
@@ -192,76 +225,86 @@ to improve robustness and generalization.
 
 ---
 
-# Challenges Faced
+# 🚧 Challenges Faced
 
 ### Memory Constraints
 
-Large image buffers exceeded the available RAM on the ESP32.
+Large image buffers exceeded available RAM on the ESP32.
 
 **Solution**
 
-Reduced image resolution and optimized memory allocation.
+Optimized image resolution and memory allocation.
 
 ---
 
 ### Lighting Variations
 
-Object detection accuracy decreased under poor lighting.
+Detection accuracy decreased under poor illumination.
 
 **Solution**
 
-Collected training images under multiple lighting conditions and viewing angles.
+Collected images under multiple lighting conditions and viewing angles.
 
 ---
 
 ### Continuous Servo Movement
 
-Servo repeatedly rotated after each prediction.
+Repeated detections caused unnecessary servo rotations.
 
 **Solution**
 
-Implemented a cooldown mechanism using `millis()` to prevent repeated actuation.
+Implemented a cooldown timer using `millis()`.
 
 ---
 
-### OLED Flickering
+### Cloud Connectivity
 
-Continuous screen refresh caused display flickering.
+Wi-Fi interruptions occasionally delayed cloud uploads.
 
 **Solution**
 
-Updated OLED only after successful object detection.
+Added reconnection logic before uploading data to ThingSpeak.
 
 ---
 
-# Results
+# 📈 Results
 
-✔ Successful on-device AI inference
-
-✔ Automatic waste segregation
-
-✔ OLED-based prediction visualization
-
-✔ Fully offline operation
-
-✔ Approximately 90% detection accuracy
+- Successfully implemented Edge AI on ESP32-CAM
+- Achieved approximately **90% object classification accuracy**
+- Automated waste segregation using servo motor
+- OLED-based real-time prediction display
+- Cloud data logging through ThingSpeak
+- Enabled remote monitoring and historical analytics
+- Fully functional embedded Edge AI + IoT prototype
 
 ---
 
-# Future Improvements
+# 🚀 Future Improvements
 
-- Support additional waste categories (Plastic, Metal, Glass)
-- Deploy quantized TensorFlow Lite model
-- Improve detection accuracy using larger datasets
-- Integrate MQTT for IoT monitoring
-- Develop mobile application dashboard
-- Implement OTA firmware updates
-- Multi-bin segregation mechanism
-- Battery-powered standalone operation
+- Support Plastic, Metal, Glass and Organic Waste
+- Multi-bin waste segregation
+- MQTT-based cloud communication
+- Mobile application dashboard
+- TensorFlow Lite Micro optimization
+- OTA firmware updates
+- Solar-powered standalone system
+- Smart waste analytics using AI
 
 ---
 
-# Bill of Materials
+# 🌍 Applications
+
+- Smart Cities
+- Smart Dustbins
+- Waste Management Systems
+- Environmental Monitoring
+- Industrial Automation
+- Edge AI Applications
+- IoT Monitoring Systems
+
+---
+
+# 📄 Bill of Materials
 
 | Component | Approx. Cost |
 |------------|-------------|
@@ -271,32 +314,22 @@ Updated OLED only after successful object detection.
 | Breadboard | ₹120 |
 | Jumper Wires | ₹80 |
 
-**Total Estimated Cost:** ₹1280
+**Estimated Total Cost:** **₹1280**
 
 ---
 
-# Applications
-
-- Smart Cities
-- Automated Recycling Systems
-- Waste Management
-- Educational Embedded AI Projects
-- Industrial IoT
-
----
-
-# Author
+# 👨‍💻 Author
 
 **Sanat Vasisht**
 
 B.Tech Electronics and Communication Engineering
 
-Vellore Institute of Technology
+Vellore Institute of Technology (VIT)
 
 GitHub: https://github.com/sanatv18
 
 ---
 
-# License
+# 📜 License
 
-This project is released under the MIT License.
+This project is licensed under the MIT License.
