@@ -33,18 +33,6 @@ This project demonstrates the integration of **Embedded Systems**, **Computer Vi
 
 ---
 
-# 🎥 Demonstration
-
-> **Project Demo Video**
-
-(Add YouTube or Google Drive link here)
-
-<p align="center">
-<img src="images/demo.gif" width="750">
-</p>
-
----
-
 # 🛠 Hardware Components
 
 | Component | Purpose |
