@@ -179,39 +179,56 @@ The ESP32 uploads classification data to the **ThingSpeak Cloud Platform** throu
 | 3.3V | OLED Power |
 
 ---
-
-# 📁 Repository Structure
+## 📁 Repository Structure
 
 ```text
 .
+├── README.md
+├── LICENSE
+├── .gitignore
+│
 ├── firmware/
-│   └── SmartWasteClassifier.ino
+│   ├── README.md
+│   ├── SmartWasteClassifier.ino
+│   ├── config.h
+│   ├── camera.cpp
+│   ├── camera.h
+│   ├── classifier.cpp
+│   ├── classifier.h
+│   ├── display.cpp
+│   ├── display.h
+│   ├── servo.cpp
+│   ├── servo.h
+│   ├── wifi.cpp
+│   ├── wifi.h
+│   ├── thingspeak.cpp
+│   ├── thingspeak.h
+│   ├── utils.cpp
+│   ├── utils.h
+│   └── libraries.md
 │
 ├── hardware/
-│   ├── wiring_diagram.png
+│   ├── README.md
+│   ├── block_diagram.png
 │   ├── circuit_diagram.png
+│   ├── wiring_diagram.png
+│   ├── pin_connections.md
 │   └── bill_of_materials.md
 │
 ├── edge_impulse/
+│   ├── README.md
 │   ├── dataset.md
-│   ├── confusion_matrix.png
-│   ├── training_metrics.png
-│   └── model_summary.png
-│
-├── images/
-│   ├── system_setup.jpg
-│   ├── oled_output.jpg
-│   ├── thingspeak_dashboard.png
-│   ├── architecture.png
-│   └── demo.gif
+│   ├── evaluation_metrics.json
+│   └── model_metrics.md
 │
 ├── docs/
+│   ├── README.md
 │   └── Project_Report.pdf
 │
 └── README.md
 ```
 
----
+
 
 # 🚧 Challenges Faced
 
