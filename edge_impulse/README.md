@@ -1,11 +1,13 @@
 # Edge Impulse Model
 
-This folder contains all machine learning resources used in this project.
+This folder contains the machine learning resources used for the Edge AI Smart Waste Classification System.
 
-Contents include:
+## Contents
 
-- Dataset Information
-- Model Export
-- Training Metrics
-- Confusion Matrix
-- Model Summary
+- Dataset information
+- Edge Impulse model export
+- Training metrics
+- Confusion matrix
+- Model summary
+
+The model was trained using Edge Impulse and deployed on the ESP32-CAM for real-time on-device object detection.
